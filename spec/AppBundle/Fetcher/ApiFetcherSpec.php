@@ -13,10 +13,9 @@ class ApiFetcherSpec extends ObjectBehavior
         $this->shouldHaveType(ApiFetcher::class);
     }
 
-    function it_fetches_organization_repositories_data_by_organization_name($organization)
+    function it_returns_a_json_when_fetching_an_organization_repositories_data($organization)
     {
         $organization->shouldBeString();
         $this->getReposDataByOrganizationName($organization)->shouldBeString();
-        
     }
 }
