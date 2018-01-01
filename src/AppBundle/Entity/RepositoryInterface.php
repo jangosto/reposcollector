@@ -6,20 +6,14 @@ use AppBundle\Entity\User;
 
 interface RepositoryInterface
 {
-    private $name;
-    private $starsCount;
-    private $isFork;
-    private $openedIssuesCount;
-    private User $user;
-
     public function getName();
-    public function setName();
+    public function setName($name);
     public function getStarsCount();
-    public function setStarsCount();
+    public function setStarsCount($starsCount);
     public function getIsFork();
-    public function setIsFork();
+    public function setIsFork($isFork);
     public function getOpenedIssuesCount();
-    public function setOpenedIssuesCount();
+    public function setOpenedIssuesCount($openedIssuesCount);
     public function getUser();
-    public function setUser();
+    public function setUser(User $user);
 }

@@ -12,7 +12,7 @@ class Repository extends Entity implements RepositoryInterface
     private $starsCount;
     private $isFork;
     private $openedIssuesCount;
-    private User $user;
+    private $user;
 
     /**
      * Get name.
@@ -113,7 +113,7 @@ class Repository extends Entity implements RepositoryInterface
      *
      * @param user the value to set.
      */
-    public function setUser($user)
+    public function setUser(User $user)
     {
         $this->user = $user;
         return $this->user;

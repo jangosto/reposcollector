@@ -4,6 +4,21 @@ parameters:
     #parameter_name: value
 
 services:
+#    app_bundle.app_extension:
+#        class:     AppBundle\Twig\AppExtension
+#        arguments: ['@app_bundle.html_renderer', '@app_bundle.csv_renderer']
+#        tags:      ['twig.extension']
+    app_bundle.html_renderer:
+        class:     AppBundle\Renderer\HtmlRenderer
+        arguments: ['@twig']
+        public: true
+    app_bundle.csv_renderer:
+        class:     AppBundle\Renderer\CsvRenderer
+        arguments: ['@twig']
+        public: true
+    app_bundle.api_fetcher:
+        class:     AppBundle\Fetcher\ApiFetcher
+        public: true
     # default configuration for services in *this* file
     _defaults:
         # automatically injects dependencies in your services

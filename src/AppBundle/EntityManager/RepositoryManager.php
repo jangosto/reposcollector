@@ -24,13 +24,12 @@ class RepositoryManager extends EntityManager implements RepositoryManagerInterf
 
     public function createEntity($data)
     {
-        $dataArray = json_decode($data);
-        $this->userManager = new UserManager($dataArray['owner']);
+        $this->userManager = new UserManager($data->owner);
         $this->entity = new Repository();
-        $this->entity->setName($dataArray('name'));
-        $this->entity->setStarsCount($dataArray('stargazers_count'));
-        $this->entity->setIsFork($dataArray['fork']);
-        $this->entity->setOpenedIssuesCount($dataArray['open_issues_count']);
+        $this->entity->setName($data->name);
+        $this->entity->setStarsCount($data->stargazers_count);
+        $this->entity->setIsFork($data->fork);
+        $this->entity->setOpenedIssuesCount($data->open_issues_count);
         $this->entity->setUser($this->userManager->getEntity());
     }
 }

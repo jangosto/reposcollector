@@ -9,14 +9,14 @@ class CsvRenderer
     private $templatingService;
 
     public function __construct(
-        $templatingService
+        \Twig\Environment $templatingService
     ) {
         $this->templatingService = $templatingService;
     }
 
     public function render(EntityManagerInterface $entityManager)
     {
-        $templatingService->render(
+        return $templatingService->render(
             "csv/".$entityManager->getEntityType().".html.twig",
             array(
                 "entity" => $entityManager->getEntity()

@@ -16,10 +16,9 @@ class UserManager extends EntityManager
 
     public function createEntity($data)
     {
-        $dataArray = json_decode($data);
         $this->entity = new User();
-        $this->entity->setId($dataArray['id']);
-        $this->entity->setLogin($dataArray['login']);
-        $this->entity->setAvatar($dataArray['avatar']);
+        $this->entity->setId($data->id);
+        $this->entity->setLogin($data->login);
+        $this->entity->setAvatar($data->avatar_url);
     }
 }

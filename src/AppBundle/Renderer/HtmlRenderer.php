@@ -9,14 +9,14 @@ class HtmlRenderer
     private $templatingService;
 
     public function __construct(
-        $templatingService
+        \Twig\Environment $templatingService
     ) {
         $this->templatingService = $templatingService;
     }
 
     public function render(EntityManagerInterface $entityManager)
     {
-        $templatingService->render(
+        return $templatingService->render(
             "html/".$entityManager->getEntityType().".html.twig",
             array(
                 "entity" => $entityManager->getEntity()

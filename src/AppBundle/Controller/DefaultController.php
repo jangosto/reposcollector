@@ -6,6 +6,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+use AppBundle\EntityManager\RepositoryManager;
+
 class DefaultController extends Controller
 {
     /**
@@ -20,10 +22,25 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/repos/{organizationName}", name="organizationrepospage")
+     * @Route("/repos/{organizationName}.html", name="organizationrepospage")
      */
     public function orgReposAction(Request $request, $organizationName)
     {
-        $fetchService = $this->get("ApiFetcher");
+        $repositoryManagers = array();
+        $fetchService = $this->get('app_bundle.api_fetcher');
+        $renderService = $this->get('app_bundle.html_renderer');
+
+        $apiData = $fetchService->getReposDataByOrganizationName($organizationName);
+        foreach (json_decode($apiData) as $repoData) {
+            $repositoryManagers[] = new RepositoryManager($repoData);
+        }
+
+        return $this->render(
+            'html/list.html.twig',
+            array(
+                "managers" => $repositoryManagers,
+                "organization" => $organizationName
+            )
+        );
     }
 }
