@@ -7,13 +7,15 @@ use AppBundle\EntityManager\EntityManagerInterface;
 
 abstract class EntityManager implements EntityManagerInterface
 {
+    const ENTITY_TYPE = "entity";
+
     protected $entity;
 
     abstract public function createEntity($data);
     
     public function getEntityType()
     {
-        return self::ENTITY_TYPE;
+        return static::ENTITY_TYPE;
     }
     
     /**

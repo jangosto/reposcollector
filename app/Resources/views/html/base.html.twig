@@ -6,13 +6,13 @@
     <body>
         <div class="container">
             {% block container %}
-            {% block page_title %}<h1>{{ organization }}' s Repositories</h1>{% endblock %}
+            {% block page_title %}<h1>{{ organization }}' s Repositories ({{ managers | length }})</h1>{% endblock %}
             {% block page_content %}
                 {% for manager in managers %}
                     {% if loop.index0 is divisible by(3) %}
                     <div class="row">
                     {% endif %}
-                    <div class="col-4">{{ renderEntity(manager) }}</div>
+                    <div class="col-4">{{ renderEntity(manager, "html") | raw }}</div>
                     {% if (loop.index0 + 1) is divisible by(3) %}
                     </div>
                     {% endif %}

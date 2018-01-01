@@ -1,0 +1,8 @@
+<img src="{{ entity.user.avatar }}" width="100px" height="100px" />
+<ul>
+    <li>Name: {{ entity.name }}</li>
+    <li>Owner Name: {{ entity.user.login }}</li>
+    <li>Stars: {{ entity.starsCount }}</li>
+    <li>Is fork: {% if entity.isFork == false %}This project is not a fork.{% else %}This project is a fork{% endif %}</li>
+    <li>Opened Issues: {{ entity.openedIssuesCount }}</li>
+</ul>

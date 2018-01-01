@@ -16,7 +16,7 @@ class HtmlRenderer
 
     public function render(EntityManagerInterface $entityManager)
     {
-        return $templatingService->render(
+        return $this->templatingService->render(
             "html/".$entityManager->getEntityType().".html.twig",
             array(
                 "entity" => $entityManager->getEntity()
