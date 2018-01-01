@@ -2,12 +2,12 @@
 
 namespace AppBundle\EntityManager;
 
+use AppBundle\Entity\EntityInterface;
+
 interface EntityManagerInterface
 {
-    protected $entity;
-
     public function createEntity($data);
     public function getEntity();
-    public function setEntity();
+    public function setEntity(EntityInterface $entity);
     public function getEntityType();
 }

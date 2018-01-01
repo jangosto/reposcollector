@@ -2,6 +2,7 @@
 
 namespace AppBundle\EntityManager;
 
+use AppBundle\Entity\EntityInterface;
 use AppBundle\EntityManager\EntityManagerInterface;
 
 abstract class EntityManager implements EntityManagerInterface
@@ -30,7 +31,7 @@ abstract class EntityManager implements EntityManagerInterface
      *
      * @param entity the value to set.
      */
-    public function setEntity($entity)
+    public function setEntity(EntityInterface $entity)
     {
         $this->entity = $entity;
         return $this->entity;

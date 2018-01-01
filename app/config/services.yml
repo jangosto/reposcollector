@@ -33,3 +33,18 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+    AppBundle\Renderer\HtmlRenderer\:
+        resource: '../../src/AppBundle/Renderer/HtmlRenderer.php'
+        public: true
+        arguments:
+            $templatingService: '@twig'
+
+    AppBundle\Renderer\CsvRenderer\:
+        resource: '../../src/AppBundle/Renderer/CsvRenderer.php'
+        public: true
+        arguments:
+            $templatingService: '@twig'
+
+    AppBundle\Fetcher\ApiFetcher\:
+        resource: '../../src/AppBundle/Fetcher/ApiFetcher.php'
+        public: true

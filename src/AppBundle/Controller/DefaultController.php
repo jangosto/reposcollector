@@ -18,4 +18,12 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
     }
+
+    /**
+     * @Route("/repos/{organizationName}", name="organizationrepospage")
+     */
+    public function orgReposAction(Request $request, $organizationName)
+    {
+        $fetchService = $this->get("ApiFetcher");
+    }
 }

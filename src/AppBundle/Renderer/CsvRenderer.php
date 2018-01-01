@@ -2,15 +2,25 @@
 
 namespace AppBundle\Renderer;
 
+use AppBundle\EntityManager\EntityManagerInterface;
+
 class CsvRenderer
 {
-    public function __construct($argument1)
-    {
-        // TODO: write logic here
+    private $templatingService;
+
+    public function __construct(
+        $templatingService
+    ) {
+        $this->templatingService = $templatingService;
     }
 
-    public function render()
+    public function render(EntityManagerInterface $entityManager)
     {
-        // TODO: write logic here
+        $templatingService->render(
+            "csv/".$entityManager->getEntityType().".html.twig",
+            array(
+                "entity" => $entityManager->getEntity()
+            )
+        );
     }
 }

@@ -11,7 +11,7 @@ class UserManager extends EntityManager
 
     public function __construct($data)
     {
-        $this->createEntity();
+        $this->createEntity($data);
     }
 
     public function createEntity($data)

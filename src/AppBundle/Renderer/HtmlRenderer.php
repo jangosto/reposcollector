@@ -2,15 +2,25 @@
 
 namespace AppBundle\Renderer;
 
+use AppBundle\EntityManager\EntityManagerInterface;
+
 class HtmlRenderer
 {
-    public function __construct($argument1)
-    {
-        // TODO: write logic here
+    private $templatingService;
+
+    public function __construct(
+        $templatingService
+    ) {
+        $this->templatingService = $templatingService;
     }
 
-    public function render()
+    public function render(EntityManagerInterface $entityManager)
     {
-        // TODO: write logic here
+        $templatingService->render(
+            "html/".$entityManager->getEntityType().".html.twig",
+            array(
+                "entity" => $entityManager->getEntity()
+            )
+        );
     }
 }
