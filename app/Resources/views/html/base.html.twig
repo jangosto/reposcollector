@@ -7,7 +7,7 @@
         <div class="container">
             {% block container %}
             {% block page_title %}<div class="row"><div class="col-6"><h1>{{ organization }}' s Repositories ({{ managers | length }})</h1></div>
-            <div class="col-6"><button style="margin-top:10px;" class="btn-info" onclick="window.location.href='/app_dev.php/repos/{{organization}}.csv'">Export CSV</button></div></div>{% endblock %}
+            <div class="col-6"><button style="margin-top:10px;" class="btn-info" onclick="window.location.href='{{ url("organizationreposcsv", { "organizationName" : "symfony" }) }}'">Export CSV</button></div></div>{% endblock %}
             {% block page_content %}
                 {% for manager in managers %}
                     {% if loop.index0 is divisible by(3) %}
