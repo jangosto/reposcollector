@@ -1,0 +1,2 @@
+Repository Name, Owner Name, Avatar URL, Stars Count, Is a Fork, Opened Ussues Count
+{% for manager in managers %}{{ renderEntity(manager, "csv") | raw }}{% endfor %}

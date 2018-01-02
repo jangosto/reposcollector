@@ -17,7 +17,7 @@ class CsvRenderer
     public function render(EntityManagerInterface $entityManager)
     {
         return $this->templatingService->render(
-            "csv/".$entityManager->getEntityType().".html.twig",
+            "csv/".$entityManager->getEntityType().".csv.twig",
             array(
                 "entity" => $entityManager->getEntity()
             )
