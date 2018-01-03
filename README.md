@@ -59,3 +59,6 @@ Now you can start apache service typing "service apache2 start"
 
 ## USING APPLICATION
 Open a browser and type url [http://www.githubconsumer.com/repos/symfony.html](http://www.githubconsumer.com/repos/symfony.html)
+
+# TESTS
+PHPSpec is used to test application. Every tests are allocated inside "/spec/AppBundle/...". To execute test you have to type "vendor/phpspec/phpspec/bin/phpspec run". In the conainer there is an alias for "vendor/phpspec/phpspec/bin/phpspec" called "phpspec".
