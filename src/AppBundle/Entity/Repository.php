@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use AppBundle\Entity\RepositoryInterface;
+use AppBundle\Entity\UserInterface;
 use AppBundle\Entity\Entity;
 use AppBundle\Entity\User;
 

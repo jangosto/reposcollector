@@ -8,14 +8,10 @@ use Prophecy\Argument;
 
 class ApiFetcherSpec extends ObjectBehavior
 {
+    const ORG_NAME = "symfony";
+
     function it_is_initializable()
     {
         $this->shouldHaveType(ApiFetcher::class);
-    }
-
-    function it_returns_a_json_when_fetching_an_organization_repositories_data($organization)
-    {
-        $organization->shouldBeString();
-        $this->getReposDataByOrganizationName($organization)->shouldBeString();
     }
 }

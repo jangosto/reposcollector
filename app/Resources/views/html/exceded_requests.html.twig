@@ -1,0 +1,9 @@
+{% extends "html/base.html.twig" %}
+
+{% block page_title %}
+    <div class="row"><div class="col-12"><h1>{{ organization }}' s Repositories</h1></div></div>
+{% endblock %}
+
+{% block page_content %}
+    <p>It seems you exceeded github API requests number (60 requests per hour). Try again later.</p>
+{% endblock %}

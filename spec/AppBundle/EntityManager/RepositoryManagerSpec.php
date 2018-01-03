@@ -12,26 +12,48 @@ use Prophecy\Argument;
 
 class RepositoryManagerSpec extends ObjectBehavior
 {
-    function let(string $data)
+    const DATA = [
+        "id" => 458058,
+        "name" => "symofny",
+        "owner" => [
+            "login" => "symfony",
+            "id" => 143937, 
+            "avatar_url" => "https://avatars3.githubusercontent.com/u/143937?v=4"
+        ],
+        "fork" => false,
+        "stargazers_count" => 16143,
+        "open_issues_count" => 810
+    ];
+
+    function let()
     {
-        $this->beConstructedWith($data);
+        $this->beConstructedWith(self::DATA);
     }
 
     function it_is_initializable()
     {
-        $this->shouldImplements(EntityManagerInterface);
-        $this->shouldImplements(RepositoryManagerInterface);
+        $this->shouldHaveType(RepositoryManager::class);
+    }
+
+    function it_is_an_entity_manager()
+    {
+        $this->shouldImplement("AppBundle\EntityManager\EntityManagerInterface");
+    }
+
+    function it_is_a_repository_manager()
+    {
+        $this->shouldImplement("AppBundle\EntityManager\RepositoryManagerInterface");
     }
 
     function it_returns_a_repository_entity_when_creates()
     {
-        $this->create()->shouldReturnAnInstanceOf(EntityInterface);
-        $this->create()->shouldReturnAnInstanceOf(RepositoryInterface);
+        $this->createEntity(self::DATA)->shouldReturnAnInstanceOf("AppBundle\Entity\EntityInterface");
+        $this->createEntity(self::DATA)->shouldReturnAnInstanceOf("AppBundle\Entity\RepositoryInterface");
     }
 
     function it_returns_an_user_entity_when_get_user()
     {
-        $this->create()->shouldReturnAnInstanceOf(EntityInterface);
-        $this->getUser()->shouldReturnAnInstanceOf(UserInterface);
+        $this->createEntity(self::DATA);
+        $this->getUser()->shouldReturnAnInstanceOf("AppBundle\Entity\UserInterface");
     }
 }

@@ -20,18 +20,26 @@ class DefaultController extends Controller
         $fetchService = $this->get('app_bundle.api_fetcher');
         $renderService = $this->get('app_bundle.html_renderer');
 
-        $apiData = $fetchService->getReposDataByOrganizationName($organizationName);
-        foreach (json_decode($apiData, false) as $repoData) {
-            $repositoryManagers[] = new RepositoryManager($repoData);
-        }
+        if (($apiData = $fetchService->getReposDataByOrganizationName($organizationName)) != false) {
+            foreach (json_decode($apiData, true) as $repoData) {
+                $repositoryManagers[] = new RepositoryManager($repoData);
+            }
 
-        return $this->render(
-            'html/list.html.twig',
-            array(
-                "managers" => $repositoryManagers,
-                "organization" => $organizationName
-            )
-        );
+            return $this->render(
+                'html/list.html.twig',
+                array(
+                    "managers" => $repositoryManagers,
+                    "organization" => $organizationName
+                )
+            );
+        } else {
+            return $this->render(
+                'html/exceded_requests.html.twig',
+                array(
+                    "organization" => $organizationName
+                )
+            );
+        }
     }
 
     /**
@@ -44,7 +52,7 @@ class DefaultController extends Controller
         $renderService = $this->get('app_bundle.csv_renderer');
 
         $apiData = $fetchService->getReposDataByOrganizationName($organizationName);
-        foreach (json_decode($apiData, false) as $repoData) {
+        foreach (json_decode($apiData, true) as $repoData) {
             $repositoryManagers[] = new RepositoryManager($repoData);
         }
 
